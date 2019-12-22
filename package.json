@@ -1,6 +1,6 @@
 {
   "name": "@direktspeed/stream",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Steal Awesome Code for All kind of Components and Web Apps FRP",
   "main": "core.mjs",
   "modele": "core.mjs",
