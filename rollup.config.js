@@ -32,7 +32,7 @@ function getConfig(sourcePath) {
 
 //export default [""].map(getConfig)
 export default {
-  experimentalCodeSplitting: true,
+  //experimentalCodeSplitting: true,
   input: ['src/core.mjs'],
   plugins: [
     //nodeResolve({ extensions }),
