@@ -562,6 +562,7 @@ class IndexSink extends Pipe {
 /** @license MIT License (c) copyright 2010-2016 original author or authors */
 /** @author Brian Cavalier */
 /** @author John Hann */
+/** @author Frank Lemanschik <frank@dspeed.eu> */
 /**
  * TODO: find a better way (without `any`)
  */
@@ -1744,6 +1745,7 @@ class SafeSink {
 /** @license MIT License (c) copyright 2010-2016 original author or authors */
 /** @author Brian Cavalier */
 /** @author John Hann */
+/** @author Frank Lemanschik <frank@dspeed.eu> */
 export function tryEvent(t, x, sink) {
     try {
         sink.event(t, x);
