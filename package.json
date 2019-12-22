@@ -8,7 +8,7 @@
   "type": "module",
   "scripts": {
     "build": "rollup -c",
-    "publish": "npm run build && npm version patch && rsync -h -v -r -P -t package.json dist && ls && cd dist && npm publish --access public",
+    "release": "npm run build && npm version patch && rsync -h -v -r -P -t package.json dist && ls && cd dist && npm publish --access public",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
