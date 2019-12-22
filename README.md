@@ -13,3 +13,8 @@ It is @most/core and Most 2.0 Compatible as it uses the same Concepts and ideas 
     - React
     - Vue
 
+## Missing docs?
+Our Code is Self Documenting and includes a examples folder which is also self explaining
+if you got problems or want to improve your knowleg about Streams even if they are 
+RxJS, Most, DomEvent, NodeJS Event, or any other Stream simply book a Training from us.
+
