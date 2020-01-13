@@ -1,6 +1,6 @@
 {
   "name": "@direktspeed/stream",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "Steal Awesome Code for All kind of Components and Web Apps FRP",
   "main": "core.mjs",
   "modele": "core.mjs",
@@ -28,5 +28,5 @@
   },
   "homepage": "https://github.com/direktspeed/es-streams#readme",
   "devDependencies": {},
-  "dependencies": { }
+  "dependencies": {}
 }
