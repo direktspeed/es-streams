@@ -1,4 +1,4 @@
-import { tryEvent } from './core.mjs'
+import { tryEvent } from './streams.mjs'
 import { pushReturn } from './prelude.mjs'
 
 //sinks are Observers
