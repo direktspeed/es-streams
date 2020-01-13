@@ -2,10 +2,8 @@
 /** @author Brian Cavalier */
 /** @author John Hann */
 /** @author Frank Lemanschik <frank@dspeed.eu> */
-//export * from '@most/core/dist/index.es.js' changed tsconfig to esnext
 export { MulticastSource, fromDomEvent, tryEvent } from './streams.mjs'
 export * from './api-curryed.mjs'
 export * from './scheduler.mjs'
-export { createAdapter, CreateSteamWithEmit } from './adapter.mjs'
-//# sourceMappingURL=index.es.js.map
-
+export { createAdapter, CreateAdapter } from './adapter.mjs'
+export { fromArray } from './from-array.mjs'

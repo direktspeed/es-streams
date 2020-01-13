@@ -1,6 +1,6 @@
 {
   "name": "@direktspeed/stream",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "Steal Awesome Code for All kind of Components and Web Apps FRP",
   "main": "core.mjs",
   "modele": "core.mjs",
@@ -9,11 +9,13 @@
   "scripts": {
     "build": "rollup -c",
     "release": "npm run build && npm version patch && rsync -h -v -r -P -t package.json dist && ls && cd dist && npm publish --access public",
+    "examples": "npx es-dev-server --node-resolve --watch",
+    "devdeps": "npm i --save-dev @babel/cli @babel/core @babel/plugin-proposal-class-properties @babel/plugin-proposal-object-rest-spread @babel/plugin-proposal-pipeline-operator @babel/plugin-transform-proto-to-assign @babel/preset-env @babel/preset-stage-0 @babel/preset-typescript briancavalier/most-unfold, @most/prelude @most/scheduler @most/types @rollup/plugin-alias @rollup/plugin-run babel-eslint babel-plugin-transform-pipeline-operator flow rollup rollup-plugin-babel rollup-plugin-commonjs rollup-plugin-local-resolve rollup-plugin-node-resolve rollup-plugin-typescript2 standard typescript",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/direktspeed/es-stream.git"
+    "url": "git+https://github.com/direktspeed/es-streams.git"
   },
   "keywords": [
     "direktspeed",
@@ -22,36 +24,9 @@
   "author": "Frank Lemanschik <frank@dspeed.eu>",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/direktspeed/es-stream/issues"
+    "url": "https://github.com/direktspeed/es-streams/issues"
   },
-  "homepage": "https://github.com/direktspeed/es-stream#readme",
-  "devDependencies": {
-    "@babel/cli": "^7.0.0-beta.54",
-    "@babel/core": "^7.0.0-beta.54",
-    "@babel/plugin-proposal-class-properties": "^7.7.4",
-    "@babel/plugin-proposal-object-rest-spread": "^7.7.4",
-    "@babel/plugin-proposal-pipeline-operator": "^7.0.0-beta.54",
-    "@babel/plugin-transform-proto-to-assign": "^7.7.4",
-    "@babel/preset-env": "^7.0.0-beta.54",
-    "@babel/preset-stage-0": "^7.0.0",
-    "@babel/preset-typescript": "^7.7.4",
-    "@most/most-unfold": "git+https://github.com/briancavalier/most-unfold.git",
-    "@most/prelude": "^1.7.3",
-    "@most/scheduler": "^1.2.3",
-    "@most/types": "^1.0.2",
-    "@rollup/plugin-alias": "^2.2.0",
-    "@rollup/plugin-run": "^1.1.0",
-    "babel-eslint": "^8.2.6",
-    "babel-plugin-transform-pipeline-operator": "^7.0.0-beta.3",
-    "flow": "^0.2.3",
-    "rollup": "^0.63.5",
-    "rollup-plugin-babel": "^4.0.0-beta.7",
-    "rollup-plugin-commonjs": "^9.1.3",
-    "rollup-plugin-local-resolve": "^1.0.7",
-    "rollup-plugin-node-resolve": "^3.3.0",
-    "rollup-plugin-typescript2": "^0.25.3",
-    "standard": "^11.0.1",
-    "typescript": "^3.7.3"
-  },
-  "dependencies": {}
+  "homepage": "https://github.com/direktspeed/es-streams#readme",
+  "devDependencies": {},
+  "dependencies": { }
 }

@@ -1,34 +1,43 @@
-//export * from '@most/prelude/dist/index.es.js' esnext tsconfig
-/** @license MIT License (c) copyright 2010-2016 original author or authors */
+/** @license Apache-2.0 License (c) copyright 2010-2016 original Frank Lemanschik <frank@dspeed.eu> */
+
+// Mutating array operations
+//this.sinks[this.sinks.push({ sink, scheduler })]
+export const pushReturn = (a, val) => a[a.push(val)];
 // Non-mutating array operations
 /**
  * a with x prepended
  */
 function cons(x, a) {
+    /*
     const l = a.length;
     const b = new Array(l + 1);
     b[0] = x;
     for (let i = 0; i < l; ++i) {
         b[i + 1] = a[i];
     }
-    return b;
+    */
+    return [x,...a];
 }
 /**
  * a with x appended
  */
 function append(x, a) {
+    /*
     const l = a.length;
     const b = new Array(l + 1);
     for (let i = 0; i < l; ++i) {
         b[i] = a[i];
     }
     b[l] = x;
-    return b;
+    */
+    const b = [...a,x]
+    return [...a,x];
 }
 /**
  * Concats two `ArrayLike`s
  */
 function concat(a, b) {
+    /*
     const al = a.length;
     const bl = b.length;
     const r = new Array(al + bl);
@@ -39,7 +48,8 @@ function concat(a, b) {
     for (let j = 0; j < bl; j++) {
         r[i++] = b[j];
     }
-    return r;
+    */
+    return [...a,...b];
 }
 //
 /**
@@ -78,23 +88,27 @@ function tail(a) {
  * duplicate a (shallow duplication)
  */
 function copy(a) {
+    /*
     const l = a.length;
     const b = new Array(l);
     for (let i = 0; i < l; ++i) {
         b[i] = a[i];
     }
-    return b;
+    */
+    return [...a];
 }
 /**
  * transform each element with f
  */
 export function mapArray(f, a) {
+    /*
     const l = a.length;
     const b = new Array(l);
     for (let i = 0; i < l; ++i) {
         b[i] = f(a[i]);
     }
-    return b;
+    */
+    return [...a].map(f);
 }
 /**
  * accumulate via left-fold
@@ -181,15 +195,15 @@ function findIndex(x, a) {
     return -1;
 }
 /**
- * Return true iff x is array-like
+ * Return true if x is array-like
  */
 export function isArrayLike(x) {
     return x != null && typeof x.length === 'number' && typeof x !== 'function';
 }
 
 /** @license MIT License (c) copyright 2010-2016 original author or authors */
-export const id = (x) => x;
-export const compose = (f, g) => (x) => f(g(x));
+export const id = x => x;
+export const compose = (f, g) => x => f(g(x));
 export const apply = (f, x) => f(x);
 export function curry2(f) {
     function curried(a, b) {

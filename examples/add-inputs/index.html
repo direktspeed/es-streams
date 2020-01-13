@@ -1,0 +1,37 @@
+<!doctype html>
+<html data-debug>
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    form, input {
+      font-family: "Droid Sans Mono", "Liberation Mono", Courier, monospace;
+      font-size: 42px;
+    }
+    input {
+      width: 25%;
+      color: #111;
+      border: none;
+      border-bottom: 1px dotted #ccc;
+      text-align: right;
+      outline: none;
+    }
+    input:focus {
+      border-bottom: 2px solid #999;
+      color: #2a2;
+    }
+  </style>
+</head>
+<body>
+<h2>@direktspeed/stream add-inputs Example index.mjs</h2>
+<p>This only allows numbers to be entered and else it will block the input</p>
+<form>
+  <input class="x" autofocus> + <input class="y"> = <span class="result"></span>
+</form>
+<h2>CustomElement example add-input-element</h2>
+<p>This only allows numbers to be entered and else it will block the input</p>
+<add-input></add-input>
+</body>
+<script type="module" src="./index.mjs"></script>
+<script type="module" src="./add-input-element.mjs"></script>
+</html>

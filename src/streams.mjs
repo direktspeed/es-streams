@@ -2,17 +2,27 @@
 /** @author Brian Cavalier */
 /** @author John Hann */
 /** @author Frank Lemanschik <frank@dspeed.eu> */
-/** This is a Collection of Streams and methods to operate on Them */
+
 import { compose, apply, id, reduce, mapArray, append, findIndex, remove } from './prelude.mjs';
 import { scheduleAsap, scheduleDelay, schedulePeriodic, schedulerRelativeTo, currentTime, cancelTask } from './scheduler.mjs';
 import { disposeNone, disposeBoth, disposeOnce, tryDisposeErrorToSink, disposeAll } from './disposable.mjs';
 
-
-
-
+/** This is a Collection of Streams and methods to operate on Them */
+/** @license Apache-2.0 License (c) copyright 2019  Frank Lemanschik <frank@dspeed.eu> */
+/**
+ * Takes a Error and rethrows it after setTimeout 0
+ * @param e a Error
+ * @borrows rethrow and setTimeout
+ */
 function fatalError(e) {
     setTimeout(rethrow, 0, e);
 }
+
+/**
+ * Takes a Error and rethrows it after setTimeout 0
+ * @param e a Error
+ * @throws a Error
+ */
 function rethrow(e) {
     throw e;
 }
@@ -78,16 +88,17 @@ class PropagateErrorTask extends PropagateTask {
     }
 }
 
-/** @license MIT License (c) copyright 2010-2017 original author or authors */
-const empty = () => EMPTY;
-const isCanonicalEmpty = (stream) => stream === EMPTY;
-const containsCanonicalEmpty = (streams) => streams.some(isCanonicalEmpty);
 class Empty {
     run(sink, scheduler) {
         return scheduleAsap(propagateEndTask(sink), scheduler);
     }
 }
 const EMPTY = new Empty();
+const empty = () => EMPTY;
+const isCanonicalEmpty = (stream) => stream === EMPTY;
+const containsCanonicalEmpty = (streams) => streams.some(isCanonicalEmpty);
+
+
 
 /** @license MIT License (c) copyright 2010-2017 original author or authors */
 const never = () => NEVER;
@@ -563,9 +574,6 @@ class IndexSink extends Pipe {
 /** @author Brian Cavalier */
 /** @author John Hann */
 /** @author Frank Lemanschik <frank@dspeed.eu> */
-/**
- * TODO: find a better way (without `any`)
- */
 /* eslint complexity: [2,7] */
 // eslint-disable-next-line complexity
 function invoke(f, args) {
@@ -587,10 +595,11 @@ function invoke(f, args) {
  * @param f function to combine most recent events
  * @param stream1
  * @param stream2
+ * @param streamX
  * @returns stream containing the result of applying f to the most recent
  *  event of each input stream, whenever a new event arrives on any stream.
  */
-const combine = (f, stream1, stream2) => combineArray(f, [stream1, stream2]);
+const combine = (f, ...streams) => combineArray(f, streams);
 /**
 * Combine latest events from all input streams
 * @param f function to combine most recent events
@@ -1412,7 +1421,7 @@ function filter(p, stream) {
  * @param stream stream from which to omit repeated events
  * @returns stream without repeated events
  */
-const skipRepeats = (stream) => skipRepeatsWith(same, stream);
+const skipRepeats = stream => skipRepeatsWith(same, stream);
 /**
  * Skip repeated events using the provided equals function to detect duplicates
  * @param equals optional function to compare items
@@ -1905,6 +1914,9 @@ class MulticastDisposable {
     }
 }
 
+/**
+ * Class capture can be options { capture: true,  passive: true }
+ */
 class FromDomEvent {
     constructor (event, node, capture) {
       this.event = event

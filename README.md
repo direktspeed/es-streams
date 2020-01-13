@@ -18,3 +18,14 @@ Our Code is Self Documenting and includes a examples folder which is also self e
 if you got problems or want to improve your knowleg about Streams even if they are 
 RxJS, Most, DomEvent, NodeJS Event, or any other Stream simply book a Training from us.
 
+## Install
+
+Use the git repo 
+```bash
+npm install direktspeed/es-streams
+``` 
+
+Use the npm package 
+```bash
+npm install @direktspeed/stream
+``` 

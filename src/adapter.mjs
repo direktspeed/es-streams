@@ -1,4 +1,5 @@
 import { tryEvent } from './core.mjs'
+import { pushReturn } from './prelude.mjs'
 
 //sinks are Observers
 export const createAdapter = () => {
@@ -6,16 +7,15 @@ export const createAdapter = () => {
     return [a => broadcast(sinks, a), new FanoutPortStream(sinks)];
 };
 
-export const broadcast = (sinks, a) => sinks.slice().forEach(({ sink, scheduler }) => tryEvent(scheduler.currentTime(), a, sink));
+export const broadcast = (sinks, a) => sinks.map(({ sink, scheduler }) => tryEvent(scheduler.currentTime(), a, sink));
 
 export class FanoutPortStream {
     constructor(sinks=[]) {
         this.sinks = sinks;
     }
     run(sink, scheduler) {
-        const s = { sink, scheduler };
-        this.sinks.push(s);
-        return new RemovePortDisposable(s, this.sinks);
+        //this.sinks[this.sinks.push({ sink, scheduler })];
+        return new RemovePortDisposable(pushReturn(this.sinks, { sink, scheduler }), this.sinks);
     }
 }
 
@@ -32,10 +32,7 @@ export class RemovePortDisposable {
     }
 }
 
-export class CreateSteamWithEmit extends FanoutPortStream {
-    constructor(sinks=[]) {
-        super(sinks);
-    }
+export class CreateAdapter extends FanoutPortStream {
     emit(x) {
         broadcast(this.sinks, x);
     }

@@ -1,4 +1,10 @@
 import { scheduleAsap } from './scheduler.mjs';
+
+/**
+ * is similar to userland implamentation     
+ * const fromArray = arr => mergeArray(arr.map(now))
+ */
+
 export class ArrayTask {
     constructor(array, sink) {
         this.array = array;
@@ -19,9 +25,8 @@ export class ArrayTask {
     }
 }
 // fromArray :: e[] -> Stream e
-export function fromArray(a) {
-    return new FromArray(a);
-}
+export const fromArray = a => new FromArray(a);
+
 class FromArray {
     constructor(a) {
         this.a = a;
